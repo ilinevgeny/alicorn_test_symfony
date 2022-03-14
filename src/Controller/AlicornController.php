@@ -26,14 +26,13 @@ class AlicornController extends AbstractController
         foreach ($pizzaObjects as $pizza)
             $pizzaCatalog[$pizza->getName()] = $this->getIngredientsCollection($doctrine, $pizza->getId());
 
-       // print_r($pizzaCatalog);
         $str = '';
         foreach($pizzaCatalog as $pizzaName => $ingredients)
             {
                 $str .= $pizzaName . ' --> ' . implode(', ', array_column($ingredients, 'name')) . '<br>';
             }
         $response = new Response();
-        $response->setContent('<html><body>Start pizzas catalog <br>'. $str  . '</body></html>');
+        $response->setContent('<html><body><div style="width: 50%; margin: 40 auto; font-size: 2vw"><h1>Pizzas catalog </h1>'. $str  . '</div> </body></html>');
         return $response;
     }
 
